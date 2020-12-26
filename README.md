@@ -54,7 +54,8 @@ This dataset contains data about customers who are contacted to market banking p
 ![Screenshot](Screenshots/pipelineInStudio.jpg)
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
+Please use following link to watch the video:
+https://youtu.be/SYy_Lm7bFPo
 
 
 
