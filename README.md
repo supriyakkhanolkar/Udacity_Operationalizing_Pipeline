@@ -7,7 +7,7 @@ In this project, we use Microsoft Azure to configure a cloud-based machine learn
 This dataset contains data about customers who are contacted to market banking products. We seek to predict if the customer will buy the product. The dataset has 21 columns out of which 20 are used as input features and 1 target column. Input features include information about customer such as age, job type, marital status, education, housing, information about contacts made with customer, outcome of previous campaign etc. Target column indicates if the customer has subscribed to term deposit. Possible values of target column are yes / no.
 
 ## Architectural Diagram
-*TODO*: Provide an architectual diagram of the project and give an introduction of each step. An architectural diagram is an image that helps visualize the flow of operations from start to finish. In this case, it has to be related to the completed project, with its various stages that are critical to the overall flow. For example, one stage for managing models could be "using Automated ML to determine the best model". 
+![alt text](https://github.com/supriyakkhanolkar/Udacity_Operationalizing_Pipeline/blob/Screenshots/ArchitectureDiagram.png?raw=true) 
 
 ## Key Steps
 *	The first step is automated ML experiment. We execute this step using a Jupyter notebook. Initially we create a new compute cluster of type Standard_DS12_V2.
