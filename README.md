@@ -14,32 +14,43 @@ This dataset contains data about customers who are contacted to market banking p
 ![Screenshot](Screenshots/Compute.jpg)
 
 *	Then we create an Azure dataset for the bank marketing data that is available in public domain.
-![Screenshot](Screenshots/BankMarketing&nbsp;Dataset.jpg)
+
+![Screenshot](Screenshots/BankMarketingDataset.jpg)
 
 *	We create an automated ML run for a classification experiment providing automlconfig and automlstep. The run is submitted. It generates and tests a number of machine learning models. 
+
 ![Screenshot](Screenshots/AutoMLmoduleCompleted.jpg)
 
 *	Upon completion it shows the best model of the run. The best model generated in our case is MaxAbsScaler,LightGBM with metric AUC_Weighted 0.94505
+
 ![Screenshot](Screenshots/BestModelSummary.jpg)
 
 *	The next step is to deploy the best model. We deploy this model using Azure Container Instance. We get a model endpoint.
+
 ![Screenshot](Screenshots/BestModelDeployed.jpg)
 
 *	We need logs for the run. So we use a python script logs.py to enable Application Insights which lets us retrieve log files. 
+
 ![Screenshot](Screenshots/EndpointApplicationInsightsEnabled.jpg)
 
 *	The next step is Swagger documentation. We use a script swagger.sh to run an instance of swagger container on port 9000. Then we use a python script to run a Python server on port 8000. It needs a file swagger.json in the same directory. We use a browser to interact with the swagger instance running with the documentation for the HTTP API of the model.
+
 ![Screenshot](Screenshots/swagger1.jpg)
 
 *	The next step is to consume model endpoints. We use scoring URI and key of the deployed model to execute a Python script endpoints.py. This script sends a sample POST request to the model. 
+
 ![Screenshot](Screenshots/endpointdotpy_output2.jpg)
 
 *	The next step is to benchmark the model. We use a script benchmark.sh that uses Apache benchmark. The output contains information for Requests per second, time per request etc.
 
+![Screenshot](Screenshots/benchmark3.jpg)
+
 *	The next step is to create, publish and consume a pipeline. We again use the Jupyter notebook for this purpose.  It creates and publishes a pipeline. 
+
 ![Screenshot](Screenshots/pipelineInNotebook.jpg)
 
 *	We can view the progress of the pipeline using Use Run Details widget
+
 ![Screenshot](Screenshots/pipelineInStudio.jpg)
 
 ## Screen Recording
