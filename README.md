@@ -9,11 +9,12 @@ This dataset contains data about customers who are contacted to market banking p
 ![Screenshot](Screenshots/ArchitectureDiagram.png)
 
 ## Key Steps
-###	Automated ML Experiment
+###	1. Automated ML Experiment
 The first step is automated ML experiment. We execute this step using a Jupyter notebook. 
 
 #### Compute Cluster
 Initially we create a new compute cluster of type Standard_DS12_V2.
+
 ![Screenshot](Screenshots/Compute.jpg)
 
 #### Dataset
@@ -32,7 +33,7 @@ Upon completion of the Automated ML experiment, we get a summary of machine lear
 
 ![Screenshot](Screenshots/BestModelSummary.jpg)
 
-###	Deploy Best Model
+###	2. Deploy Best Model
 We deploy this model using Azure Container Instance. This gives us a model endpoint which can be consumed using REST endpoint and Primary key.
 
 #### Check Deploy Status = Running
@@ -41,32 +42,37 @@ We deploy this model using Azure Container Instance. This gives us a model endpo
 #### Check REST endpoint and Primary key
 ![Screenshot](Screenshots/ConsumeModelEndpoint.jpg)
 
-###	Logging using Application Insights
+###	3. Logging using Application Insights
 We need logs for the run. So we use a Python script logs.py to enable Application Insights which lets us retrieve log files. 
 #### Check Application Insights enabled = True
 ![Screenshot](Screenshots/EndpointApplicationInsightsEnabled.jpg)
 
-###	Swagger documentation 
+###	4. Swagger documentation 
 We use a script swagger.sh to run an instance of swagger container on port 9000. Then we use a Python script serve.py to run a Python server on port 8000. It needs a file swagger.json in the same directory. We use a browser to interact with the swagger instance running with the documentation for the HTTP API of the model.
 
 ![Screenshot](Screenshots/swagger1.jpg)
 
-###	Consume model endpoint 
-We need to consume model endpoint. We use REST endpoint(scoring URI) and Primary key of the deployed model to execute a Python script endpoints.py. This script sends a sample POST request to the model. 
+###	5. Consume model endpoint 
+We need to consume model endpoint. We use REST endpoint(scoring URI) and Primary key of the deployed model to execute a Python script endpoints.py. This script sends a sample POST request to the model. We get output in the format:
+{"result":["no","no"]}
 
+Also, it creates a file data.json.
+
+#### Check output of endpoints.py and data.json in directory listing
 ![Screenshot](Screenshots/endpointdotpy_output2.jpg)
 
-###	Benchmark the model
+###	6. Benchmark the model
 We use a script benchmark.sh that uses Apache benchmark. The output contains information for Requests per second, time per request etc.
 
 ![Screenshot](Screenshots/benchmark3.jpg)
 
-###	Create, publish and consume model pipeline
-We again use the Jupyter notebook for this purpose.  It creates and publishes a pipeline. 
+###	7. Create, publish and consume model pipeline
+We again use the Jupyter notebook for this purpose.  It creates and publishes a pipeline. We can check the progress of the pipeline in Azure Studio using View Run Details widget.
+
 #### Pipeline in Jupyter Notebook
 ![Screenshot](Screenshots/pipelineInNotebook.jpg)
 
-####	Progress of pipeline using Use Run Details widget
+####	Progress of pipeline using View Run Details widget
 ![Screenshot](Screenshots/pipelineInStudio.jpg)
 
 ## Screen Recording
