@@ -9,22 +9,31 @@ This dataset contains data about customers who are contacted to market banking p
 ![Screenshot](Screenshots/ArchitectureDiagram.png)
 
 ## Key Steps
-###	The first step is automated ML experiment. We execute this step using a Jupyter notebook. Initially we create a new compute cluster of type Standard_DS12_V2.
+###	Automated ML Experiment
+The first step is automated ML experiment. We execute this step using a Jupyter notebook. 
+
+#### Compute Cluster
+Initially we create a new compute cluster of type Standard_DS12_V2.
 ![Screenshot](Screenshots/Compute.jpg)
 
-###	Then we create an Azure dataset for the bank marketing data that is available in public domain.
+#### Dataset
+Then we create an Azure dataset for the bank marketing data that is available in public domain.
 
 ![Screenshot](Screenshots/BankMarketingDataset.jpg)
 
-###	We create an automated ML run for a classification experiment providing automlconfig and automlstep. The run is submitted. It generates and tests a number of machine learning models. 
+#### Automated ML Run
+We create an automated ML run for a classification experiment providing automlconfig and automlstep. The run is submitted. It generates and tests a number of machine learning models. 
 
+##### Check Status = Completed and Best Model Summary
 ![Screenshot](Screenshots/AutoMLmoduleCompleted.jpg)
 
-###	Upon completion of the Automated ML experiment, we get a summary of machine learning models generated. Also, we get the best model of the run. The best model generated in our case is MaxAbsScaler,LightGBM with metric AUC Weighted = 0.94505
+##### Best Model	
+Upon completion of the Automated ML experiment, we get a summary of machine learning models generated. Also, we get the best model of the run. The best model generated in our case is MaxAbsScaler,LightGBM with metric AUC Weighted = 0.94505
 
 ![Screenshot](Screenshots/BestModelSummary.jpg)
 
-###	The next step is to deploy the best model. We deploy this model using Azure Container Instance. This gives us a model endpoint which can be consumed using REST endpoint and Primary key.
+###	Deploy Best Model
+We deploy this model using Azure Container Instance. This gives us a model endpoint which can be consumed using REST endpoint and Primary key.
 
 #### Check Deploy Status = Running
 ![Screenshot](Screenshots/BestModelDeployed.jpg)
@@ -32,28 +41,32 @@ This dataset contains data about customers who are contacted to market banking p
 #### Check REST endpoint and Primary key
 ![Screenshot](Screenshots/ConsumeModelEndpoint.jpg)
 
-###	We need logs for the run. So we use a python script logs.py to enable Application Insights which lets us retrieve log files. 
+###	Logging using Application Insights
+We need logs for the run. So we use a Python script logs.py to enable Application Insights which lets us retrieve log files. 
 #### Check Application Insights enabled = True
 ![Screenshot](Screenshots/EndpointApplicationInsightsEnabled.jpg)
 
-###	The next step is Swagger documentation. We use a script swagger.sh to run an instance of swagger container on port 9000. Then we use a python script serve.py to run a Python server on port 8000. It needs a file swagger.json in the same directory. We use a browser to interact with the swagger instance running with the documentation for the HTTP API of the model.
+###	Swagger documentation 
+We use a script swagger.sh to run an instance of swagger container on port 9000. Then we use a Python script serve.py to run a Python server on port 8000. It needs a file swagger.json in the same directory. We use a browser to interact with the swagger instance running with the documentation for the HTTP API of the model.
 
 ![Screenshot](Screenshots/swagger1.jpg)
 
-###	The next step is to consume model endpoints. We use scoring URI and key of the deployed model to execute a Python script endpoints.py. This script sends a sample POST request to the model. 
+###	Consume model endpoint 
+We need to consume model endpoint. We use REST endpoint(scoring URI) and Primary key of the deployed model to execute a Python script endpoints.py. This script sends a sample POST request to the model. 
 
 ![Screenshot](Screenshots/endpointdotpy_output2.jpg)
 
-###	The next step is to benchmark the model. We use a script benchmark.sh that uses Apache benchmark. The output contains information for Requests per second, time per request etc.
+###	Benchmark the model
+We use a script benchmark.sh that uses Apache benchmark. The output contains information for Requests per second, time per request etc.
 
 ![Screenshot](Screenshots/benchmark3.jpg)
 
-###	The next step is to create, publish and consume a pipeline. We again use the Jupyter notebook for this purpose.  It creates and publishes a pipeline. 
-
+###	Create, publish and consume model pipeline
+We again use the Jupyter notebook for this purpose.  It creates and publishes a pipeline. 
+#### Pipeline in Jupyter Notebook
 ![Screenshot](Screenshots/pipelineInNotebook.jpg)
 
-###	We can view the progress of the pipeline using Use Run Details widget
-
+####	Progress of pipeline using Use Run Details widget
 ![Screenshot](Screenshots/pipelineInStudio.jpg)
 
 ## Screen Recording
