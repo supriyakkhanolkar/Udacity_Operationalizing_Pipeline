@@ -1,4 +1,4 @@
-# Operationaliing Machine Learning
+# Operationalizing Machine Learning
 
 This project is part of the Udacity's Azure ML Engineer Nanodegree. The aim of this project is to create, publish and consume a Microsoft Azure pipeline. For this pipeline we use a machine learning model generated using Azure Automated ML experiment. We deploy this model to create an HTTP API endpoint. We consume this endpoint by sending HTTP POST request to this endpoint.
 
