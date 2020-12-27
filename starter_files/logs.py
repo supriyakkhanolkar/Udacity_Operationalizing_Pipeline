@@ -6,7 +6,7 @@ ws = Workspace.from_config()
 
 # Set with the deployment name
 #name = "demo-model-deploy"
-name = "bankmarketing-model"
+name = "bank-marketing-model"
 
 # load existing web service
 service = Webservice(name=name, workspace=ws)
