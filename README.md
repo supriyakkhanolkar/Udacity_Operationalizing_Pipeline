@@ -25,6 +25,9 @@ Then we create an Azure dataset for the bank marketing data that is available in
 #### Automated ML Run
 We create an automated ML run for a classification experiment providing automlconfig and automlstep to a new pipeline. The pipeline run is submitted. It generates and tests a number of machine learning models. 
 
+#####	Progress of pipeline using View Run Details widget
+![Screenshot](Screenshots/RunDetailsWidget.jpg)
+
 ##### Check Status = Completed and Best Model Summary
 ![Screenshot](Screenshots/AutoMLmoduleCompleted.jpg)
 
@@ -42,17 +45,7 @@ We deploy this model using Azure Container Instance. This gives us a model endpo
 ##### Check REST endpoint and Primary key
 ![Screenshot](Screenshots/ConsumeModelEndpoint.jpg)
 
-###	3. Logging using Application Insights
-We need logs for the run. So we use a Python script logs.py to enable Application Insights which lets us retrieve log files. 
-##### Check Application Insights enabled = True
-![Screenshot](Screenshots/EndpointApplicationInsightsEnabled.jpg)
-
-###	4. Swagger documentation 
-We use a script swagger.sh to run an instance of swagger container on port 9000. Then we use a Python script serve.py to run a Python server on port 8000. It needs a file swagger.json in the same directory. We use a browser to interact with the swagger instance running with the documentation for the HTTP API of the model.
-
-![Screenshot](Screenshots/swagger1.jpg)
-
-###	5. Consume model endpoint 
+###	3. Consume model endpoint 
 We need to consume model endpoint. We use REST endpoint(scoring URI) and Primary key of the deployed model to execute a Python script endpoints.py. This script sends a sample POST request to the model. We get output in the format:
 {"result":["no","no"]}
 
@@ -61,13 +54,29 @@ Also, it creates a file data.json.
 ##### Check output of endpoints.py and data.json in directory listing
 ![Screenshot](Screenshots/endpointdotpy_output2.jpg)
 
+###	4. Logging using Application Insights
+We need logs for the run. So we use a Python script logs.py to enable Application Insights which lets us retrieve log files. 
+##### Check Application Insights enabled = True
+![Screenshot](Screenshots/EndpointApplicationInsightsEnabled.jpg)
+
+###	5. Swagger documentation 
+We use a script swagger.sh to run an instance of swagger container on port 9000. Then we use a Python script serve.py to run a Python server on port 8000. It needs a file swagger.json in the same directory. We use a browser to interact with the swagger instance running with the documentation for the HTTP API of the model.
+
+![Screenshot](Screenshots/swagger1.jpg)
+
 ###	6. Benchmark the model
 We use a script benchmark.sh that uses Apache benchmark. The output contains information for Requests per second, time per request etc.
 
 ![Screenshot](Screenshots/benchmark3.jpg)
 
-###	7. Create, publish and consume model pipeline
+###	7. Publish and consume model pipeline
 We again use the Jupyter notebook for this purpose.  First, we publish the pipeline of our Automated ML experiment to create an HTTP API endpoint. 
+
+##### Pipeline published in Jupyter Notebook
+![Screenshot](Screenshots/PublishedPipelineInNotebk.jpg)
+
+##### REST Endpoint of published pipeline
+![Screenshot](Screenshots/NewPipelineRESTEndpoints.jpg)
 
 Then we consume this pipeline as follows:
 
@@ -77,11 +86,11 @@ Then we consume this pipeline as follows:
 * We make a request to trigger the run. We can use the run id to monitor the status of the new run. 
 * We can check the progress of the pipeline in Azure Studio using View Run Details widget.
 
-##### Pipeline in Jupyter Notebook
-![Screenshot](Screenshots/pipelineInNotebook.jpg)
+##### Pipeline consumed and submitted
+![Screenshot](Screenshots/NewPipelineSubmittedNotebk.jpg)
 
-#####	Progress of pipeline using View Run Details widget
-![Screenshot](Screenshots/pipelineInStudio.jpg)
+##### New pipeline run with Status = completed
+![Screenshot](Screenshots/NewPipelineCompletedStudio.jpg)
 
 ## Screen Recording
 Please use following link to watch the video:
