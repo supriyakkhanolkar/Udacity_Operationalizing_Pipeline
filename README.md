@@ -34,7 +34,7 @@ We create an automated ML run for a classification experiment providing automlco
 ##### Best Model	
 Upon completion of the Automated ML experiment, we get a summary of machine learning models generated. Also, we get the best model of the run. The best model generated in our case is VotingEnsemble with metric AUC Weighted = 0.94663
 
-![Screenshot](Screenshots/BestModelSummary.jpg)
+![Screenshot](Screenshots/AutomlModels.jpg)
 
 ###	2. Deploy Best Model
 We deploy this model using Azure Container Instance. This gives us a model endpoint which can be consumed using REST endpoint and Primary key.
