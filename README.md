@@ -29,7 +29,7 @@ We create an automated ML run for a classification experiment providing automlco
 ![Screenshot](Screenshots/AutoMLmoduleCompleted.jpg)
 
 ##### Best Model	
-Upon completion of the Automated ML experiment, we get a summary of machine learning models generated. Also, we get the best model of the run. The best model generated in our case is MaxAbsScaler,LightGBM with metric AUC Weighted = 0.94505
+Upon completion of the Automated ML experiment, we get a summary of machine learning models generated. Also, we get the best model of the run. The best model generated in our case is VotingEnsemble with metric AUC Weighted = 0.94663
 
 ![Screenshot](Screenshots/BestModelSummary.jpg)
 
