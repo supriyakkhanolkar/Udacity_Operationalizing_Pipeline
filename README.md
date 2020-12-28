@@ -13,7 +13,7 @@ This dataset contains data about customers who are contacted to market banking p
 The first step is automated ML experiment. We execute this step using a Jupyter notebook. 
 
 #### Compute Cluster
-Initially we create a new compute cluster of type Standard_DS12_V2.
+Initially we create a new compute cluster of type Standard_D2_V2.
 
 ![Screenshot](Screenshots/Compute.jpg)
 
@@ -23,7 +23,7 @@ Then we create an Azure dataset for the bank marketing data that is available in
 ![Screenshot](Screenshots/BankMarketingDataset.jpg)
 
 #### Automated ML Run
-We create an automated ML run for a classification experiment providing automlconfig and automlstep to a new pipeline. The pipeline run is submitted. It generates and tests a number of machine learning models. 
+We create an automated ML run for a classification experiment providing automlconfig and automlstep to a new pipeline. The pipeline run is submitted. It generates and tests a number of machine learning models. We can check the progress of the pipeline in Azure Studio using View Run Details widget
 
 #####	Progress of pipeline using View Run Details widget
 ![Screenshot](Screenshots/RunDetailsWidget.jpg)
@@ -84,7 +84,6 @@ Then we consume this pipeline as follows:
 * We get the REST url from the endpoint property of the published pipeline object.
 * We build an HTTP POST request to the endpoint along with a JSON payload. 
 * We make a request to trigger the run. We can use the run id to monitor the status of the new run. 
-* We can check the progress of the pipeline in Azure Studio using View Run Details widget.
 
 ##### Pipeline consumed and submitted
 ![Screenshot](Screenshots/NewPipelineSubmittedNotebk.jpg)
